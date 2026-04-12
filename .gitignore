@@ -1,0 +1,17 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Secrets
+.env
+
+# Données générées
+videos/
+output/
+temp/
+
+# macOS
+.DS_Store
