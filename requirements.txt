@@ -1,0 +1,7 @@
+yt-dlp==2026.3.17
+python-dotenv==1.2.2
+openai==2.31.0
+elevenlabs==2.42.0
+audio-separator==0.44.1
+onnxruntime==1.24.4
+python-telegram-bot==22.7

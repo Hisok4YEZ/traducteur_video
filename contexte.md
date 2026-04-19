@@ -44,13 +44,23 @@ tiktok-translator/
 
 - [x] bot.py (Telegram) — `main()` polling, `handle_url` lance `pipeline.run()` via `ThreadPoolExecutor` pour ne pas bloquer asyncio
 
+- [x] requirements.txt (sans pyannote — trop lourd pour 1GB RAM)
+- [x] deploy.sh (Ubuntu 22.04 : apt, venv, systemd)
+- [x] .env.example (sans HUGGINGFACE_TOKEN)
+
 ### 📋 À Faire
 - [ ] Tests & validation
-- [ ] Documentation
+
+## Déploiement (Oracle Cloud Free Tier — Ubuntu 22.04)
+- `bash deploy.sh` (en root) : installe python3/ffmpeg, crée le venv, configure systemd
+- Service : `tiktok-translator.service` — redémarre automatiquement au reboot
+- Logs : `sudo journalctl -u tiktok-translator -f`
+- La diarisation pyannote est désactivée en production (HUGGINGFACE_TOKEN absent) — trop lourde pour 1GB RAM
 
 ## Environnement
 - Python venv : `.venv/`
-- Dépendances installées : `yt-dlp`, `python-dotenv`, `openai`, `elevenlabs`, `audio-separator`, `onnxruntime`, `python-telegram-bot`, `pyannote.audio`
+- Dépendances prod : `yt-dlp`, `python-dotenv`, `openai`, `elevenlabs`, `audio-separator`, `onnxruntime`, `python-telegram-bot`
+- Dépendances hors prod : `pyannote.audio` (diarisation, optionnelle, lourde)
 - Dépendances abandonnées : `demucs` (torchcodec incompatible Python 3.14), `spleeter` (numpy incompatible Python 3.14)
 
 ## Structure des Fichiers (mise à jour)
